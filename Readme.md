@@ -20,15 +20,15 @@
     - 재료 상태 변화: 날것(Raw) -> 썰린 상태(Sliced) -> 익힌 상태(Cooked) -> 탄 상태(Burned).
 
 - **카운터 상호작용시스템**
-    - ClearCounter
-    - CuttingCounter
-    - StoveCounter
+    - ClearCounter : 빈카운터에는 재료를 올릴 수 있음
+    - CuttingCounter : 특정 재료를 q키를 이용해 썰수 있음
+    - StoveCounter : 특정 재료를 조리 
     
 
 
 ## 4. **기능 구현 계획**
 
-플레이어 캐릭터의 상태를 '빈손 상태(EmptyHanded)'와 '물건을 든 상태(HoldingObject)' 두 가지로 정의하겠습니다.
+플레이어 캐릭터의 상태를 '빈손 상태(EmptyHanded)'와 '물건을 든 상태(HoldingObject)' 두 가지로 정의.
 
 ### 1. 플레이어 이동 및 상태 구현
 - **빈손상태**
