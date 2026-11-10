@@ -611,6 +611,9 @@ MonoBehaviour:
   playerInteractLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  playerInteractLayerMaskKitchenOb:
+    serializedVersion: 2
+    m_Bits: 512
   gameInput: {fileID: 634137810}
   objectPickupPoint: {fileID: 929244639}
   raycastPoint: {fileID: 1020492036}

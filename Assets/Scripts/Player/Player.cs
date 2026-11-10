@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IKitchenObjectHolder
     [SerializeField] private float playerInteractDistance = 2f;
     [SerializeField] private float diagnalMovementThreshold = 0.5f;
     [SerializeField] private LayerMask playerInteractLayerMask;
+    [SerializeField] private LayerMask playerInteractLayerMaskKitchenOb;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Transform objectPickupPoint;
     [SerializeField] private Transform raycastPoint;
@@ -127,16 +128,16 @@ public class Player : MonoBehaviour, IKitchenObjectHolder
     {
         Debug.DrawRay(raycastPoint.position, transform.forward * playerInteractDistance, Color.red);
 
-        bool interactHit = Physics.Raycast(raycastPoint.position, transform.forward, out RaycastHit interactObject, playerInteractDistance, playerInteractLayerMask);
-        
-        
-        if (interactHit && interactObject.transform.TryGetComponent(out KitchenCounter counter))
+        bool interactHitCounter = Physics.Raycast(raycastPoint.position, transform.forward, out RaycastHit interactObject, playerInteractDistance, playerInteractLayerMask);
+        bool interactHitOb = Physics.Raycast(raycastPoint.position, transform.forward, out RaycastHit interactOb, playerInteractDistance, playerInteractLayerMaskKitchenOb);
+
+        if (interactHitCounter && interactObject.transform.TryGetComponent(out KitchenCounter counter))
         {
             //카운터와 상호작용
             //Debug.Log("충돌 counter" + counter);
             SetSelectedCounter(counter);
         }
-        else if (interactHit && interactObject.transform.TryGetComponent(out KitchenObject ingredient))
+        else if (interactHitOb && interactOb.transform.TryGetComponent(out KitchenObject ingredient))
         {
             //바닥에 있는 재료 줍기
             SetSelectedCounter(null);
@@ -157,13 +158,13 @@ public class Player : MonoBehaviour, IKitchenObjectHolder
         else if(currentKitchenObject == null && selectedObject != null)
         {
             //손에 없음
-            //selectedObject.SetHolder(this);
+            selectedObject.SetHolder(this);
            
         }
         else if(currentKitchenObject != null)
         {
             //손에 들고 있음
-            //DropObject(currentKitchenObject);
+            DropObject(currentKitchenObject);
         }
     }
 
