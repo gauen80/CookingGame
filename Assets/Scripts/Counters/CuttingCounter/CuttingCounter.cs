@@ -86,7 +86,7 @@ public class CuttingCounter : ClearCounter, IProgressTracked
         if(!Cutting)
         {
             activeCuttingRecipe = recipe;
-            SetProgress(0);
+            SetProgress(currentKitchenObject.currentCutCount);
         }
         else
         {
@@ -120,6 +120,8 @@ public class CuttingCounter : ClearCounter, IProgressTracked
     private void SetProgress(int newProgress)
     {
         cuttingProgress = newProgress;
+        if(Cutting)
+            currentKitchenObject.currentCutCount = newProgress;
         OnCut?.Invoke(this, new CutProgressUpdatedArg
         {
             active = cuttingProgress != 0

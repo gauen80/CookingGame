@@ -4,6 +4,7 @@ public class KitchenObject : MonoBehaviour
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
+    public int currentCutCount = 0;
     public Rigidbody rb;
 
     public KitchenObjectSO GetKitchenObjectSO() { return kitchenObjectSO; }
