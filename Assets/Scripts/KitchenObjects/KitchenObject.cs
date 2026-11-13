@@ -70,6 +70,20 @@ public class KitchenObject : MonoBehaviour
         }
     }
 
+    public bool AddToPlate(PlateKitchenObject plate)
+    {
+        if (plate.TryAddIngredient(kitchenObjectSO))
+        {
+            DestroySelf();
+            return true;
+        }
+        else
+        {
+            
+            return false;
+        }
+    }
+
     // public bool AddToPlate(PlateKitchenObject plate)
     public void DestroySelf()
     {

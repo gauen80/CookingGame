@@ -153,5 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ff1dd04741edf43a09de53150b0db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObject
-  kitchenObjectSO: {fileID: 0}
+  kitchenObjectSO: {fileID: 11400000, guid: d0fef47ae70349b4e95cf1695b50a96d, type: 2}
+  currentCutCount: 0
   rb: {fileID: 8608449052632733484}

@@ -27,14 +27,36 @@ public class ClearCounter : HoldCounter
                     OnCounterItemChange?.Invoke(this, null);
                 }
             }
-            
+            else
+            {
+                bool counterHoldingPlate = currentKitchenObject.TryGetObject(out PlateKitchenObject counterPlate);
+                bool playerHoldingPlate = player.GetCurrentKitchenObject().TryGetObject(out PlateKitchenObject playerPlate);
+
+                if (counterHoldingPlate && !playerHoldingPlate)
+                {
+
+                    player.GetCurrentKitchenObject().AddToPlate(counterPlate);
+                }
+                else if (!counterHoldingPlate && playerHoldingPlate)
+                {
+                    if (this.currentKitchenObject.AddToPlate(playerPlate))
+                    {
+                    
+                        OnCounterItemChange?.Invoke(this, null);
+                    }
+                }
+                else
+                {
+                    //카운터 & 플레이어 모두 접시를 들고있거나 재료를 들고 있을때
+  
+                }
+
+            }
         }
         else if (this.HoldingObject)
         {
             //플레이어가 빈손
             this.currentKitchenObject.SetHolder(player);
-
-            
             OnCounterItemChange?.Invoke(this, null);
         }
     }
