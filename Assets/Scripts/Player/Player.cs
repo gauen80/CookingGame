@@ -146,6 +146,7 @@ public class Player : MonoBehaviour, IKitchenObjectHolder
         else
         {
             SetSelectedCounter(null);
+            selectedObject = null;
         }
     }
 
